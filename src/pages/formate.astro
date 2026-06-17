@@ -1,0 +1,199 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const formats = [
+  {
+    title: 'Plattformen',
+    subtitle: 'Digitale & physische Räume',
+    description: 'Wir schaffen sowohl digitale als auch physische Plattformen, die den sektorübergreifenden Dialog zwischen Verwaltung, Wirtschaft und Wissenschaft ermöglichen. Diese Räume sind so gestaltet, dass sie den offenen Austausch und die konstruktive Zusammenarbeit fördern.',
+    features: ['Digitale Kollaborationsräume', 'Regionale Netzwerktreffen', 'Branchen-spezifische Foren', 'Online-Wissensplattform'],
+    icon: `<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>`,
+  },
+  {
+    title: 'Think-Tanks & Do-Tanks',
+    subtitle: 'Denken und Handeln verbinden',
+    description: 'Unsere Think-Tanks und Do-Tanks verbinden intellektuelle Analyse mit praktischer Umsetzung. Experten aus allen Sektoren arbeiten gemeinsam an Lösungsansätzen für aktuelle gesellschaftliche Herausforderungen.',
+    features: ['Interdisziplinäre Arbeitsgruppen', 'Praxisorientierte Workshops', 'Policy-Empfehlungen', 'Prototyping & Pilotprojekte'],
+    icon: `<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 1 1 7.072 0l-.548.547A3.374 3.374 0 0 0 14 18.469V19a2 2 0 1 1-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>`,
+  },
+  {
+    title: 'Kamin-Gespräche',
+    subtitle: 'Vertraulicher Dialog auf Augenhöhe',
+    description: 'In unseren Kamin-Gesprächen kommen Führungskräfte aus Politik, Wirtschaft und Verwaltung in einem vertraulichen Rahmen zusammen. Diese intimen Gesprächsrunden ermöglichen offenen Austausch jenseits formaler Strukturen.',
+    features: ['Exklusiver Teilnehmerkreis', 'Chatham House Rules', 'Thematische Schwerpunkte', 'Persönlicher Vertrauensaufbau'],
+    icon: `<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
+  },
+  {
+    title: 'Symposien & Konferenzen',
+    subtitle: 'Wissen teilen, Netzwerke bilden',
+    description: 'Unsere Symposien und Konferenzen bringen eine große Zahl von Akteuren zusammen und dienen dem Wissenstransfer, der Netzwerkbildung und der öffentlichen Diskussion relevanter Themen.',
+    features: ['Keynote-Vorträge', 'Panel-Diskussionen', 'Networking-Sessions', 'Praxis-Workshops'],
+    icon: `<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>`,
+  },
+  {
+    title: 'Internationale Forschungs-Kolloquien',
+    subtitle: 'Globale Perspektiven',
+    description: 'Unsere internationalen Forschungs-Kolloquien bringen Wissenschaftler und Praktiker aus aller Welt zusammen, um gemeinsam an Lösungen für globale Herausforderungen der Zusammenarbeit zu forschen.',
+    features: ['Internationale Forschungsteams', 'Peer-reviewed Publikationen', 'Cross-cultural Studies', 'Global Best Practices'],
+    icon: `<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`,
+  },
+];
+---
+
+<BaseLayout title="Formate" description="Die Dialogformate des CVT Instituts: Plattformen, Think-Tanks, Kamin-Gespräche, Symposien und internationale Kolloquien.">
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero__content">
+        <div class="page-hero__badge animate-fade-in-up">Formate</div>
+        <h1 class="animate-fade-in-up animate-delay-1">Unsere Dialogformate</h1>
+        <p class="page-hero__sub animate-fade-in-up animate-delay-2">
+          Vielfältige Formate für sektorübergreifenden Dialog, Wissenstransfer und gemeinsame Innovation
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="formats-list">
+    <div class="container">
+      {formats.map((format, i) => (
+        <div class={`format-section ${i % 2 === 1 ? 'format-section--reverse' : ''}`} data-reveal>
+          <div class="format-section__content">
+            <div class="format-section__icon" set:html={format.icon}></div>
+            <div class="format-section__label">{format.subtitle}</div>
+            <h2>{format.title}</h2>
+            <p>{format.description}</p>
+            <ul class="format-section__features">
+              {format.features.map((feat) => (
+                <li>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                  {feat}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="format-section__visual">
+            <div class="format-section__number">{String(i + 1).padStart(2, '0')}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .page-hero {
+    padding: calc(var(--nav-height) + var(--space-16)) 0 var(--space-16);
+    background: var(--gradient-dark);
+    text-align: center;
+  }
+
+  .page-hero__content { max-width: 700px; margin: 0 auto; }
+  .page-hero__badge {
+    display: inline-block; padding: var(--space-1) var(--space-4);
+    background: rgba(107, 143, 158, 0.2); color: var(--steel-blue-light);
+    font-size: var(--text-sm); font-weight: 500; border-radius: var(--radius-full); margin-bottom: var(--space-6);
+  }
+  .page-hero h1 { color: var(--white); font-size: var(--text-5xl); margin-bottom: var(--space-4); }
+  .page-hero__sub { font-size: var(--text-xl); color: var(--gray-300); margin-bottom: 0; }
+
+  .format-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-16);
+    align-items: center;
+    padding: var(--space-16) 0;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .format-section:last-child {
+    border-bottom: none;
+  }
+
+  .format-section--reverse {
+    direction: rtl;
+  }
+
+  .format-section--reverse > * {
+    direction: ltr;
+  }
+
+  .format-section__icon {
+    width: 64px;
+    height: 64px;
+    border-radius: var(--radius-xl);
+    background: rgba(107, 143, 158, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--dark-teal);
+    margin-bottom: var(--space-4);
+  }
+
+  .format-section__label {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--steel-blue);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: var(--space-2);
+  }
+
+  .format-section h2 {
+    font-size: var(--text-3xl);
+    margin-bottom: var(--space-4);
+  }
+
+  .format-section p {
+    font-size: var(--text-lg);
+    line-height: 1.8;
+  }
+
+  .format-section__features {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3);
+    margin-top: var(--space-6);
+  }
+
+  .format-section__features li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+  }
+
+  .format-section__features svg {
+    color: var(--dark-teal);
+    flex-shrink: 0;
+  }
+
+  .format-section__visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .format-section__number {
+    font-family: var(--font-heading);
+    font-size: 12rem;
+    font-weight: 800;
+    color: var(--steel-blue);
+    opacity: 0.06;
+    line-height: 1;
+  }
+
+  @media (max-width: 768px) {
+    .page-hero h1 { font-size: var(--text-3xl); }
+    .format-section {
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+    }
+    .format-section--reverse { direction: ltr; }
+    .format-section__visual { display: none; }
+    .format-section__features { grid-template-columns: 1fr; }
+  }
+</style>

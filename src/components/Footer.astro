@@ -1,0 +1,241 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="footer" id="site-footer">
+  <div class="footer__top">
+    <div class="container">
+      <div class="footer__grid">
+        <!-- Brand Column -->
+        <div class="footer__brand">
+          <div class="footer__logo">
+            <div class="footer__logo-name">CVT</div>
+            <div class="footer__logo-sub">Institut für Innovation,<br/>Führung und Zusammenarbeit</div>
+          </div>
+          <p class="footer__desc">
+            Institut für Innovation, Führung und Zusammenarbeit (gGmbH). Brücken bauen zwischen Verwaltung, Wirtschaft und Wissenschaft.
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer__col">
+          <h4 class="footer__heading">Navigation</h4>
+          <ul class="footer__list">
+            <li><a href="/">Startseite</a></li>
+            <li><a href="/ueber-uns">Über uns</a></li>
+            <li><a href="/themenbereiche">Themenbereiche</a></li>
+            <li><a href="/formate">Formate</a></li>
+            <li><a href="/forschung">Forschung</a></li>
+          </ul>
+        </div>
+
+        <!-- Topics -->
+        <div class="footer__col">
+          <h4 class="footer__heading">Themenbereiche</h4>
+          <ul class="footer__list">
+            <li><a href="/themenbereiche">Innovativ Führen</a></li>
+            <li><a href="/themenbereiche">Agile Organisationen</a></li>
+            <li><a href="/themenbereiche">Cybersicherheit</a></li>
+            <li><a href="/themenbereiche">Future of Work</a></li>
+            <li><a href="/themenbereiche">Chancengleichheit</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div class="footer__col">
+          <h4 class="footer__heading">Kontakt</h4>
+          <ul class="footer__list footer__list--contact">
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Deutschland</span>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:info@cvt-institut.de">info@cvt-institut.de</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Large decorative horse watermark -->
+  <div class="footer__horse-watermark" aria-hidden="true">
+    <img src="/images/horse-silhouette.png" alt="" />
+  </div>
+
+  <div class="footer__bottom">
+    <div class="container">
+      <div class="footer__bottom-inner">
+        <p>&copy; {currentYear} Creating Value Together gGmbH. Alle Rechte vorbehalten.</p>
+        <div class="footer__legal">
+          <a href="/impressum">Impressum</a>
+          <a href="/datenschutz">Datenschutz</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--charcoal);
+    color: var(--gray-300);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .footer__top {
+    padding: var(--space-16) 0 var(--space-12);
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer__grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: var(--space-10);
+  }
+
+  .footer__logo {
+    margin-bottom: var(--space-4);
+  }
+
+  .footer__logo-name {
+    font-family: 'Playfair Display', 'Georgia', serif;
+    font-weight: 700;
+    font-size: var(--text-2xl);
+    color: var(--white);
+    letter-spacing: 0.05em;
+    line-height: 1;
+  }
+
+  .footer__logo-sub {
+    font-size: 0.55rem;
+    color: var(--gray-400);
+    line-height: 1.35;
+    margin-top: 4px;
+  }
+
+  .footer__desc {
+    font-size: var(--text-sm);
+    color: var(--gray-400);
+    line-height: 1.7;
+    max-width: 300px;
+  }
+
+  .footer__heading {
+    font-family: var(--font-heading);
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: var(--space-4);
+  }
+
+  .footer__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .footer__list a {
+    color: var(--gray-400);
+    font-size: var(--text-sm);
+    transition: color var(--transition-fast);
+    text-decoration: none;
+  }
+
+  .footer__list a:hover {
+    color: var(--steel-blue-light);
+  }
+
+  .footer__list--contact li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+  }
+
+  .footer__list--contact svg {
+    color: var(--steel-blue);
+    flex-shrink: 0;
+  }
+
+  .footer__horse-watermark {
+    position: absolute;
+    right: -40px;
+    bottom: 30px;
+    width: 320px;
+    height: 320px;
+    opacity: 0.04;
+    z-index: 0;
+    pointer-events: none;
+    filter: invert(1) brightness(1.5);
+  }
+
+  .footer__horse-watermark img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .footer__bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding: var(--space-6) 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer__bottom-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: var(--text-sm);
+    color: var(--gray-600);
+  }
+
+  .footer__legal {
+    display: flex;
+    gap: var(--space-6);
+  }
+
+  .footer__legal a {
+    color: var(--gray-600);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  .footer__legal a:hover {
+    color: var(--steel-blue-light);
+  }
+
+  @media (max-width: 1024px) {
+    .footer__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .footer__grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+    }
+
+    .footer__bottom-inner {
+      flex-direction: column;
+      gap: var(--space-3);
+      text-align: center;
+    }
+
+    .footer__horse-watermark {
+      width: 200px;
+      height: 200px;
+      right: -30px;
+      bottom: 20px;
+    }
+  }
+</style>
+
+
+

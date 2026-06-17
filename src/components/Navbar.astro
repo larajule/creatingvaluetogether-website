@@ -1,0 +1,270 @@
+---
+const currentPath = Astro.url.pathname;
+
+const navLinks = [
+  { href: '/', label: 'Startseite' },
+  { href: '/ueber-uns', label: 'Über uns' },
+  { href: '/themenbereiche', label: 'Themenbereiche' },
+  { href: '/formate', label: 'Formate' },
+  { href: '/forschung', label: 'Forschung' },
+  { href: '/kontakt', label: 'Kontakt' },
+];
+---
+
+<nav class="navbar" id="main-nav">
+  <div class="navbar__container">
+    <a href="/" class="navbar__logo" aria-label="CVT Startseite">
+      <div class="navbar__logo-wrap">
+        <img src="/images/horse-silhouette.png" alt="" class="navbar__horse" aria-hidden="true" />
+        <div class="navbar__logo-text">
+          <span class="navbar__logo-name">CVT</span>
+          <span class="navbar__logo-subtitle">Institut für Innovation,<br/>Führung und Zusammenarbeit</span>
+        </div>
+      </div>
+    </a>
+
+    <div class="navbar__links" id="nav-links">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class:list={['navbar__link', { 'navbar__link--active': currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href)) }]}
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+
+    <button class="navbar__burger" id="nav-burger" aria-label="Menü öffnen" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <!-- Mobile menu overlay -->
+  <div class="navbar__mobile" id="nav-mobile">
+    <div class="navbar__mobile-inner">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class:list={['navbar__mobile-link', { 'navbar__mobile-link--active': currentPath === link.href }]}
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</nav>
+
+<script>
+  const burger = document.getElementById('nav-burger');
+  const mobile = document.getElementById('nav-mobile');
+  const body = document.body;
+
+  burger?.addEventListener('click', () => {
+    const isOpen = burger.classList.toggle('navbar__burger--active');
+    mobile?.classList.toggle('navbar__mobile--open');
+    body.style.overflow = isOpen ? 'hidden' : '';
+    burger.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  // Close mobile menu on link click
+  document.querySelectorAll('.navbar__mobile-link').forEach((link) => {
+    link.addEventListener('click', () => {
+      burger?.classList.remove('navbar__burger--active');
+      mobile?.classList.remove('navbar__mobile--open');
+      body.style.overflow = '';
+    });
+  });
+</script>
+
+<style>
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid transparent;
+    transition: all var(--transition-base);
+  }
+
+  :global(.navbar--scrolled) .navbar {
+    border-bottom-color: var(--border-light);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .navbar__container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--space-6);
+    height: var(--nav-height);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .navbar__logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  .navbar__logo-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 62px;
+  }
+
+  .navbar__horse {
+    position: absolute;
+    left: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 72px;
+    width: auto;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.55;
+  }
+
+  .navbar__logo-text {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+    padding-left: 36px;
+  }
+
+  .navbar__logo-name {
+    font-family: 'Playfair Display', 'Georgia', serif;
+    font-weight: 700;
+    font-size: 1.75rem;
+    color: var(--charcoal);
+    letter-spacing: 0.05em;
+  }
+
+  .navbar__logo-subtitle {
+    font-size: 0.55rem;
+    color: var(--charcoal);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    line-height: 1.35;
+    margin-top: 2px;
+  }
+
+  .navbar__links {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+  }
+
+  .navbar__link {
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--text-secondary);
+    border-radius: var(--radius-full);
+    transition: all var(--transition-fast);
+    text-decoration: none;
+  }
+
+  .navbar__link:hover {
+    color: var(--dark-teal);
+    background: rgba(107, 143, 158, 0.08);
+  }
+
+  .navbar__link--active {
+    color: var(--dark-teal);
+    background: rgba(107, 143, 158, 0.12);
+  }
+
+  .navbar__burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--space-2);
+  }
+
+  .navbar__burger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--charcoal);
+    border-radius: var(--radius-full);
+    transition: all var(--transition-base);
+  }
+
+  .navbar__burger--active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .navbar__burger--active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .navbar__burger--active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  .navbar__mobile {
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-base);
+    z-index: -1;
+  }
+
+  .navbar__mobile--open {
+    opacity: 1;
+    visibility: visible;
+    z-index: 999;
+  }
+
+  .navbar__mobile-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-6);
+  }
+
+  .navbar__mobile-link {
+    font-family: var(--font-heading);
+    font-size: var(--text-2xl);
+    font-weight: 500;
+    color: var(--charcoal);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  .navbar__mobile-link:hover,
+  .navbar__mobile-link--active {
+    color: var(--dark-teal);
+  }
+
+  @media (max-width: 768px) {
+    .navbar__links { display: none; }
+    .navbar__burger { display: flex; }
+    .navbar__logo-subtitle { display: none; }
+    .navbar__horse { height: 52px; left: -4px; }
+    .navbar__logo-text { padding-left: 26px; }
+    .navbar__logo-name { font-size: 1.4rem; }
+    .navbar__logo-wrap { height: 48px; }
+  }
+</style>
+

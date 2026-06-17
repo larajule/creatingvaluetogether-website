@@ -1,0 +1,212 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const topics = [
+  {
+    title: 'Innovativ Führen',
+    description: 'Mixed Groups aus Verwaltung und Unternehmen; attraktiv für GenZ. Neue Ansätze der Führung, die sektorübergreifend wirken.',
+    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`,
+    color: 'steel-blue',
+  },
+  {
+    title: 'Virtuelle Ideenwerkstatt',
+    description: 'App als Schnittstelle zwischen Unternehmen und Verwaltung. Digitale Plattformen für sektorübergreifende Innovation.',
+    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 1 1 7.072 0l-.548.547A3.374 3.374 0 0 0 14 18.469V19a2 2 0 1 1-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>`,
+    color: 'dark-teal',
+  },
+  {
+    title: 'Innovating Boards',
+    description: 'Bessere Arbeit von Aufsichtsräten und Beiräten, zusätzliche Definition von Rollen nach angelsächsischem Modell.',
+    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>`,
+    color: 'warm-brown',
+  },
+  {
+    title: 'Innovationen',
+    description: 'Nachhaltiger Aufbau von Innovationsfähigkeit für Wirtschaft und Verwaltung durch gemeinsame Forschung und Praxis.',
+    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`,
+    color: 'steel-blue',
+  },
+  {
+    title: 'Cybersicherheit',
+    description: 'Netzwerk kompetenter Partner zur Schaffung von Resilienz gegenüber digitalen Bedrohungen in allen Sektoren.',
+    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>`,
+    color: 'dark-teal',
+  },
+  {
+    title: 'Gleichberechtigte Teilhabe',
+    description: 'Durch Schaffung von Transparenz mittels Studien die gleichberechtigte Teilhabe aller Akteure sicherstellen.',
+    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
+    color: 'warm-brown',
+  },
+  {
+    title: 'Chancengleichheit',
+    description: 'Aufbau von Netzwerken zur Schaffung von Chancengleichheit für alle Beteiligten in Wirtschaft und Verwaltung.',
+    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
+    color: 'steel-blue',
+  },
+  {
+    title: 'Agile Organisationen',
+    description: 'Verwandlung eines Unternehmens von einer hierarchischen in eine agile Organisation. Methoden und Best Practices.',
+    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>`,
+    color: 'dark-teal',
+  },
+  {
+    title: 'Future of Work',
+    description: 'Neue Arbeitszeitmodelle, z.B. Führung im Job-Share. Erforschung der Arbeitswelt von morgen für alle Sektoren.',
+    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
+    color: 'warm-brown',
+  },
+];
+---
+
+<BaseLayout title="Themenbereiche" description="Die Forschungs- und Arbeitsfelder des CVT Instituts: Von innovativer Führung über Cybersicherheit bis Future of Work.">
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero__content">
+        <div class="page-hero__badge animate-fade-in-up">Themenbereiche</div>
+        <h1 class="animate-fade-in-up animate-delay-1">Unsere Forschungs- und Arbeitsfelder</h1>
+        <p class="page-hero__sub animate-fade-in-up animate-delay-2">
+          Neun Themenbereiche, die die Zukunft der Zusammenarbeit zwischen Verwaltung, Wirtschaft und Wissenschaft gestalten
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="topics-grid">
+    <div class="container">
+      <div class="topics-grid" data-reveal>
+        {topics.map((topic, i) => (
+          <div class={`topic-card topic-card--${topic.color}`} style={`animation-delay: ${i * 0.1}s`}>
+            <div class="topic-card__icon" set:html={topic.icon}></div>
+            <h3>{topic.title}</h3>
+            <p>{topic.description}</p>
+            <div class="topic-card__accent"></div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--accent" id="topics-cta">
+    <div class="container container--narrow">
+      <div class="topic-cta-block" data-reveal>
+        <h2>Interesse an einem Themenbereich?</h2>
+        <p>Wir freuen uns über Anfragen zur Zusammenarbeit, Forschungskooperationen und den Austausch von Ideen.</p>
+        <a href="/kontakt" class="btn btn--outline btn--lg">Kontakt aufnehmen →</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .page-hero {
+    padding: calc(var(--nav-height) + var(--space-16)) 0 var(--space-16);
+    background: var(--gradient-dark);
+    text-align: center;
+  }
+
+  .page-hero__content { max-width: 700px; margin: 0 auto; }
+  .page-hero__badge {
+    display: inline-block; padding: var(--space-1) var(--space-4);
+    background: rgba(107, 143, 158, 0.2); color: var(--steel-blue-light);
+    font-size: var(--text-sm); font-weight: 500; border-radius: var(--radius-full); margin-bottom: var(--space-6);
+  }
+  .page-hero h1 { color: var(--white); font-size: var(--text-5xl); margin-bottom: var(--space-4); }
+  .page-hero__sub { font-size: var(--text-xl); color: var(--gray-300); margin-bottom: 0; }
+
+  .topics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-8);
+  }
+
+  .topic-card {
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    padding: var(--space-10);
+    border: 1px solid var(--border-light);
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .topic-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-xl);
+  }
+
+  .topic-card__accent {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    opacity: 0;
+    transition: opacity var(--transition-base);
+  }
+
+  .topic-card:hover .topic-card__accent { opacity: 1; }
+
+  .topic-card--steel-blue .topic-card__accent { background: var(--steel-blue); }
+  .topic-card--steel-blue:hover { border-color: var(--steel-blue-light); }
+  .topic-card--dark-teal .topic-card__accent { background: var(--dark-teal); }
+  .topic-card--dark-teal:hover { border-color: var(--dark-teal-light); }
+  .topic-card--warm-brown .topic-card__accent { background: var(--warm-brown); }
+  .topic-card--warm-brown:hover { border-color: var(--warm-brown-light); }
+
+  .topic-card__icon {
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-lg);
+    background: rgba(107, 143, 158, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--space-5);
+    color: var(--dark-teal);
+    transition: all var(--transition-base);
+  }
+
+  .topic-card--warm-brown .topic-card__icon { color: var(--warm-brown); background: rgba(122, 107, 99, 0.1); }
+
+  .topic-card:hover .topic-card__icon {
+    background: var(--dark-teal);
+    color: var(--white);
+  }
+
+  .topic-card--warm-brown:hover .topic-card__icon {
+    background: var(--warm-brown);
+    color: var(--white);
+  }
+
+  .topic-card h3 {
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-3);
+  }
+
+  .topic-card p {
+    font-size: var(--text-sm);
+    line-height: 1.7;
+    margin-bottom: 0;
+  }
+
+  .topic-cta-block {
+    text-align: center;
+    padding: var(--space-8);
+  }
+
+  .topic-cta-block h2 { color: var(--white); margin-bottom: var(--space-4); }
+  .topic-cta-block p { color: rgba(255,255,255,0.85); font-size: var(--text-lg); margin-bottom: var(--space-8); }
+
+  @media (max-width: 1024px) {
+    .topics-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 768px) {
+    .page-hero h1 { font-size: var(--text-3xl); }
+    .topics-grid { grid-template-columns: 1fr; }
+  }
+</style>

@@ -1,0 +1,248 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Kontakt" description="Kontaktieren Sie das CVT Institut, Creating Value Together. Wir freuen uns auf den Dialog.">
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero__content">
+        <div class="page-hero__badge animate-fade-in-up">Kontakt</div>
+        <h1 class="animate-fade-in-up animate-delay-1">Sprechen Sie uns an</h1>
+        <p class="page-hero__sub animate-fade-in-up animate-delay-2">
+          Wir freuen uns über Ihr Interesse an Zusammenarbeit und Dialog
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact-form">
+    <div class="container">
+      <div class="contact-grid" data-reveal>
+        <div class="contact-form-wrap">
+          <h2>Nachricht senden</h2>
+          <p>Füllen Sie das Formular aus und wir melden uns zeitnah bei Ihnen.</p>
+
+          <form class="form" id="kontakt-form" action="#" method="POST">
+            <div class="form__row">
+              <div class="form__group">
+                <label for="name" class="form__label">Name *</label>
+                <input type="text" id="name" name="name" required class="form__input" placeholder="Ihr vollständiger Name" />
+              </div>
+              <div class="form__group">
+                <label for="email" class="form__label">E-Mail *</label>
+                <input type="email" id="email" name="email" required class="form__input" placeholder="ihre@email.de" />
+              </div>
+            </div>
+
+            <div class="form__row">
+              <div class="form__group">
+                <label for="organisation" class="form__label">Organisation</label>
+                <input type="text" id="organisation" name="organisation" class="form__input" placeholder="Ihre Organisation" />
+              </div>
+              <div class="form__group">
+                <label for="sektor" class="form__label">Sektor</label>
+                <select id="sektor" name="sektor" class="form__input">
+                  <option value="">Bitte wählen...</option>
+                  <option value="verwaltung">Öffentliche Verwaltung</option>
+                  <option value="wirtschaft">Privatwirtschaft</option>
+                  <option value="wissenschaft">Wissenschaft / Forschung</option>
+                  <option value="dritter-sektor">Dritter Sektor / NGO</option>
+                  <option value="sonstiges">Sonstiges</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form__group">
+              <label for="betreff" class="form__label">Betreff *</label>
+              <select id="betreff" name="betreff" required class="form__input">
+                <option value="">Bitte wählen...</option>
+                <option value="allgemein">Allgemeine Anfrage</option>
+                <option value="kooperation">Forschungskooperation</option>
+                <option value="veranstaltung">Veranstaltungsteilnahme</option>
+                <option value="mitgliedschaft">Mitgliedschaft / Engagement</option>
+                <option value="presse">Presse / Medien</option>
+              </select>
+            </div>
+
+            <div class="form__group">
+              <label for="nachricht" class="form__label">Nachricht *</label>
+              <textarea id="nachricht" name="nachricht" required class="form__input form__textarea" rows="6" placeholder="Ihre Nachricht an uns..."></textarea>
+            </div>
+
+            <div class="form__group">
+              <label class="form__checkbox">
+                <input type="checkbox" required />
+                <span>Ich stimme der Verarbeitung meiner Daten gemäß der <a href="/datenschutz">Datenschutzerklärung</a> zu. *</span>
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn--primary btn--lg form__submit">
+              Nachricht absenden
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </button>
+          </form>
+        </div>
+
+        <div class="contact-info">
+          <div class="contact-info__card">
+            <h3>Kontaktdaten</h3>
+
+            <div class="contact-info__item">
+              <div class="contact-info__icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div>
+                <div class="contact-info__label">E-Mail</div>
+                <a href="mailto:info@cvt-institut.de">info@cvt-institut.de</a>
+              </div>
+            </div>
+
+            <div class="contact-info__item">
+              <div class="contact-info__icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div>
+                <div class="contact-info__label">Standort</div>
+                <span>Deutschland</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-info__card contact-info__card--accent">
+            <h3>Dialogformate</h3>
+            <p>Möchten Sie an einem unserer Formate teilnehmen oder eines veranstalten?</p>
+            <ul class="contact-info__list">
+              <li>Kamin-Gespräche</li>
+              <li>Think-Tanks & Do-Tanks</li>
+              <li>Symposien & Konferenzen</li>
+              <li>Internationale Kolloquien</li>
+            </ul>
+            <a href="/formate" class="btn btn--outline-dark">Formate entdecken →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .page-hero {
+    padding: calc(var(--nav-height) + var(--space-16)) 0 var(--space-16);
+    background: var(--gradient-dark); text-align: center;
+  }
+  .page-hero__content { max-width: 700px; margin: 0 auto; }
+  .page-hero__badge {
+    display: inline-block; padding: var(--space-1) var(--space-4);
+    background: rgba(107,143,158,0.2); color: var(--steel-blue-light);
+    font-size: var(--text-sm); font-weight: 500; border-radius: var(--radius-full); margin-bottom: var(--space-6);
+  }
+  .page-hero h1 { color: var(--white); font-size: var(--text-5xl); margin-bottom: var(--space-4); }
+  .page-hero__sub { font-size: var(--text-xl); color: var(--gray-300); margin-bottom: 0; }
+
+  /* Contact Grid */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: var(--space-16);
+    align-items: start;
+  }
+
+  .contact-form-wrap h2 { margin-bottom: var(--space-2); }
+  .contact-form-wrap > p { font-size: var(--text-lg); color: var(--text-secondary); margin-bottom: var(--space-8); }
+
+  /* Form styles */
+  .form { display: flex; flex-direction: column; gap: var(--space-5); }
+  .form__row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); }
+  .form__group { display: flex; flex-direction: column; gap: var(--space-2); }
+  .form__label { font-size: var(--text-sm); font-weight: 500; color: var(--charcoal); }
+
+  .form__input {
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--border-medium);
+    border-radius: var(--radius-md);
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    color: var(--charcoal);
+    background: var(--white);
+    transition: all var(--transition-fast);
+    outline: none;
+  }
+
+  .form__input:focus {
+    border-color: var(--dark-teal);
+    box-shadow: 0 0 0 3px rgba(74, 124, 138, 0.1);
+  }
+
+  .form__input::placeholder { color: var(--gray-400); }
+
+  .form__textarea { resize: vertical; min-height: 120px; }
+
+  .form__checkbox {
+    display: flex; align-items: flex-start; gap: var(--space-3);
+    font-size: var(--text-sm); color: var(--text-secondary); cursor: pointer;
+  }
+
+  .form__checkbox input { margin-top: 3px; accent-color: var(--dark-teal); }
+  .form__checkbox a { color: var(--dark-teal); text-decoration: underline; }
+
+  .form__submit { align-self: flex-start; margin-top: var(--space-2); }
+
+  /* Contact Info */
+  .contact-info {
+    display: flex; flex-direction: column; gap: var(--space-6); position: sticky; top: calc(var(--nav-height) + var(--space-6));
+  }
+
+  .contact-info__card {
+    background: var(--white); border-radius: var(--radius-xl);
+    padding: var(--space-8); border: 1px solid var(--border-light); box-shadow: var(--shadow-md);
+  }
+
+  .contact-info__card--accent {
+    background: rgba(107, 143, 158, 0.05);
+    border-color: var(--steel-blue-light);
+  }
+
+  .contact-info__card h3 { font-size: var(--text-xl); margin-bottom: var(--space-4); }
+  .contact-info__card p { font-size: var(--text-sm); }
+
+  .contact-info__item {
+    display: flex; align-items: center; gap: var(--space-3);
+    padding: var(--space-3) 0;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .contact-info__item:last-of-type { border-bottom: none; }
+
+  .contact-info__icon {
+    width: 40px; height: 40px; border-radius: var(--radius-md);
+    background: rgba(107,143,158,0.1); display: flex; align-items: center; justify-content: center;
+    color: var(--dark-teal); flex-shrink: 0;
+  }
+
+  .contact-info__label { font-size: var(--text-xs); color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+  .contact-info__item a { color: var(--dark-teal); font-weight: 500; }
+
+  .contact-info__list {
+    list-style: none; display: flex; flex-direction: column; gap: var(--space-2);
+    margin-bottom: var(--space-6);
+  }
+
+  .contact-info__list li {
+    font-size: var(--text-sm); color: var(--text-secondary);
+    padding-left: var(--space-4); position: relative;
+  }
+
+  .contact-info__list li::before {
+    content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+    width: 6px; height: 6px; border-radius: 50%; background: var(--steel-blue);
+  }
+
+  @media (max-width: 768px) {
+    .page-hero h1 { font-size: var(--text-3xl); }
+    .contact-grid { grid-template-columns: 1fr; }
+    .form__row { grid-template-columns: 1fr; }
+    .contact-info { position: static; }
+  }
+</style>
