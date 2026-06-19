@@ -805,6 +805,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   @media (max-width: 480px) {
     .hero__title { font-size: var(--text-3xl); }
-    .hero__badge { font-size: var(--text-xs); }
+    .hero__badge {
+      font-size: var(--text-xs);
+      padding: var(--space-2) var(--space-4);
+      margin-bottom: var(--space-6);
+      line-height: 1.6;
+    }
+    .hero__content {
+      padding-top: calc(var(--nav-height) + var(--space-4));
+      padding-left: var(--space-4);
+      padding-right: var(--space-4);
+    }
   }
 </style>
