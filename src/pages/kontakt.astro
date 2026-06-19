@@ -23,7 +23,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <h2>Nachricht senden</h2>
           <p>Füllen Sie das Formular aus und wir melden uns zeitnah bei Ihnen.</p>
 
-          <form class="form" id="kontakt-form" action="https://formspree.io/f/info@creatingvaluetogether.de" method="POST">
+          <form class="form" id="kontakt-form" action="https://formsubmit.co/info@creatingvaluetogether.de" method="POST">
+            <!-- FormSubmit.co Konfiguration -->
+            <input type="hidden" name="_subject" value="Neue Kontaktanfrage über creatingvaluetogether.de">
+            <input type="hidden" name="_next" value="https://creatingvaluetogether.de/kontakt">
+            <input type="hidden" name="_captcha" value="true">
+            <input type="text" name="_honey" style="display:none">
+            <input type="hidden" name="_template" value="table">
             <div class="form__row">
               <div class="form__group">
                 <label for="name" class="form__label">Name *</label>
